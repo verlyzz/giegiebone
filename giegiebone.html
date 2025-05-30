@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Giegiebone Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: pink;
+      font-family: 'Playfair Display', serif;
+      color: #4b4b4b;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      min-height: 100vh;
+      text-align: center;
+      position: relative;
+      padding-top: 200px; 
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 60px;
+      margin-top: 40px;
+      color: #fff;
+    }
+
+    .welcome-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 100px;
+      color: #fff;
+      position: absolute;
+      top: 25px;
+      left: 25%;
+      transform: rotate(2deg);
+      opacity: 0.3;
+    }
+
+    .to-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 100px;
+      color: #fff;
+      position: absolute;
+      top: 70px;
+      left: 46%;
+      transform: rotate(2deg);
+      opacity: 0.3;
+    }
+
+    .giegiebone-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 100px;
+      color: #fff;
+      position: absolute;
+      top: 100px;
+      left: 53%;
+      transform: rotate(2deg);
+      opacity: 0.3;
+    }
+
+    .door {
+      margin: 100px auto 30px;
+      width: 300px;
+      height: auto;
+      position: relative;
+    }
+
+    .door img {
+      width: 100%;
+      display: block;
+    }
+
+    .footer-text {
+      margin-top: 20px;
+      font-size: 24px;
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+    }
+
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f8f8f8;
+      padding: 1rem 2rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem;
+      background-color: #eaeaea;
+    }
+
+    .products {
+      padding: 2rem;
+    }
+
+    .product-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      width: 200px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f8f8f8;
+    }
+
+
+        /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff9f9; /* very light pastel pink */
+      color: #443a43;
+      line-height: 1.6;
+    }
+
+    /* Palette variables */
+    :root {
+      --white: #ffffff;
+      --pink: #ffe7f0;
+      --green: #e3f8e0;
+      --lavender: #f2e7fb;
+      --deep-pink: #e39dac;
+      --text-gray: #555;
+      --accent: #a672b2;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--white);
+      border-bottom: 1px solid #f2e7fb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .nav-links li a,
+    .cart-icon {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: var(--accent);
+    }
+
+    .cart-icon {
+      background: var(--pink);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      background: var(--lavender);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .hero input {
+      padding: 0.6rem;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: var(--white);
+      margin-top: 1rem;
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem auto;
+      flex-wrap: wrap;
+    }
+
+    .filters select {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: var(--green);
+      font-weight: 500;
+    }
+
+    /* Products */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 2px solid var(--lavender);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(168, 130, 176, 0.1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin: 0.8rem 0 0.3rem;
+      color: var(--accent);
+    }
+
+    .product-card p {
+      color: #666;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-card button {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background: #925aa7;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--pink);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        justify-content: center;
+        gap: 0.7rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .filters {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+
+    :root {
+        --lavender: #d6c1e8;
+        --white: #ffffff;
+        --black: #000000;
+        --rose: #ff8fab;
+      }
+  
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f7f2fa;
+        margin: 0;
+        padding: 0;
+      }
+  
+      .navbar {
+        background: var(--lavender);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .navbar h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+  
+      .navbar .search-bar input {
+        padding: 0.5rem;
+        border: 1px solid var(--black);
+        outline: none;
+      }
+  
+      .navbar .cart {
+        font-weight: bold;
+      }
+  
+      .filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+  
+      .filters select, .filters input {
+        padding: 0.5rem;
+        border: 1px solid var(--black);
+        outline: none;
+      }
+  
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+      }
+  
+      .product-card {
+        background: var(--white);
+        border: 2px solid var(--lavender);
+        padding: 1rem;
+        text-align: center;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 12px rgba(168, 130, 176, 0.1);
+        border-radius: 0px; /* no rounded corners */
+      }
+  
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 0px; /* no rounded corners */
+      }
+  
+      .product-card button {
+        background: var(--rose);
+        color: var(--white);
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 0px; /* no rounded corners */
+      }
+  
+      .product-card button:hover {
+        background: #ff6f9f;
+      }
+  
+      .footer {
+        background: var(--lavender);
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+      }
+
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Welcome<br>To<br>Giegiebone</h1>
+    <div class="welcome-text">welcome</div>
+    <div class="to-text">to</div>
+    <div class="giegiebone-text">giegiebone</div>
+
+    <div class="door">
+      <img src="" alt="door">
+    </div>
+    
+    <p class="footer-text">Seek More Beauty</p>
+  </div>
+
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">A PART OF ME</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">Rings</a></li>
+        <li><a href="#">Earrings & Earcuffs</a></li>
+        <li><a href="#">Bracelets</a></li>
+        <li><a href="#">Necklaces</a></li>
+        <li><a href="#">Hair Accessories</a></li>
+        <li><a href="#">Brooches</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Hero Section -->
+    <header class="hero">
+      <h1>Welcome to our store!</h1>
+      <p>BE A PART OF YOU</p>
+    </header>
+  
+    <!-- Product Showcase -->
+    <section class="products">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        <!-- Example Product Card -->
+        <div class="product-card">
+          <img src="product-image.jpg" alt="Product Name" />
+          <h3>Product Name</h3>
+          <p>$35.00 USD</p>
+          <button>Add to Cart</button>
+        </div>
+        <!-- Repeat product cards as needed -->
+      </div>
+    </section>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Follow us on Instagram: <a href="https://www.instagram.com/summerfling.accessories/">@summerfling.accessories</a></p>
+      <p>&copy; 2025 A Part Of Me</p>
+    </footer>
+
+
+
+  
+
+<nav class="navbar">
+     <div class="logo">A PART OF ME</div>
+     <ul class="nav-links">
+       <li><a href="#">Home</a></li>
+       <li><a href="#">Shop All</a></li>
+       <li><a href="#">Rings</a></li>
+       <li><a href="#">Earrings</a></li>
+       <li><a href="#">Bracelets</a></li>
+       <li><a href="#">Necklaces</a></li>
+       <li><a href="#">Login</a></li>
+       <li><a href="#">Register</a></li>
+       <li><span class="cart-icon">🛒 <span id="cart-count">0</span></span></li>
+     </ul>
+   </nav>
+ 
+   <header class="hero">
+     <h1>BE A PART OF YOU</h1>
+     <p>Timeless jewelry, curated with love.</p>
+     <input type="text" id="search" placeholder="Search accessories..." />
+   </header>
+ 
+   <section class="filters">
+     <select id="category-filter">
+       <option value="all">All Categories</option>
+       <option value="ring">Ring</option>
+       <option value="earring">Earring</option>
+       <option value="bracelet">Bracelet</option>
+     </select>
+     <select id="price-sort">
+       <option value="default">Sort by Price</option>
+       <option value="low-high">Low to High</option>
+       <option value="high-low">High to Low</option>
+     </select>
+   </section>
+ 
+   <section class="products" id="product-container">
+     <!-- JS will populate these -->
+   </section>
+ 
+   <footer class="footer">
+     <p>© 2025 A Part Of Me | Follow us on <a href="https://instagram.com/summerfling.accessories" target="_blank">Instagram</a></p>
+   </footer>
+ 
+   <script>
+
+
+   </script>
+  
+    <!-- Filters -->
+    <div class="filters">
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="ring">Strapphones</option>
+        <option value="earring">Keychains</option>
+        <option value="bracelet">Bracelets</option>
+      </select>
+  
+      <select id="price-sort">
+        <option value="default">Sort by Price</option>
+        <option value="low-high">Low to High</option>
+        <option value="high-low">High to Low</option>
+      </select>
+    </div>
+  
+    <!-- Product Grid -->
+    <div class="product-grid" id="product-container"></div>
+  
+    <!-- JavaScript -->
+    <script>
+      const products = [
+        { id: 1, name: "Rose Gold Ring", category: "ring", price: 30, img: "https://via.placeholder.com/200" },
+        { id: 2, name: "Silver Hoop Earring", category: "earring", price: 25, img: "https://via.placeholder.com/200" },
+        { id: 3, name: "Crystal Bracelet", category: "bracelet", price: 20, img: "https://via.placeholder.com/200" },
+        { id: 4, name: "Charm Ring", category: "ring", price: 35, img: "https://via.placeholder.com/200" },
+      ];
+  
+        container.innerHTML = filtered.map(p => `
+          <div class="product-card">
+            <img src="${p.img}" alt="${p.name}" />
+            <h3>${p.name}</h3>
+            <p>$${p.price.toFixed(2)}</p>
+            <button onclick="addToCart()">Add to Cart</button>
+          </div>
+        `).join('');
+      }
+  
+      function addToCart() {
+        cartCount++;
+        document.getElementById('cart-count').textContent = cartCount;
+        alert('Item added to cart!');
+      }
+  
+      search.addEventListener('input', () => {
+        renderProducts(search.value, categoryFilter.value, priceSort.value);
+      });
+  
+      categoryFilter.addEventListener('change', () => {
+        renderProducts(search.value, categoryFilter.value, priceSort.value);
+      });
+  
+      priceSort.addEventListener('change', () => {
+        renderProducts(search.value, categoryFilter.value, priceSort.value);
+      });
+  
+      renderProducts(); // initial render
+
+</body>
+</html>

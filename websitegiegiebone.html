@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jewelry Shop</title>
+  <style>
+      :root {
+        --lavender: #d6c1e8;
+        --white: #ffffff;
+        --black: #000000;
+        --rose: #ff8fab;
+      }
+  
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f7f2fa;
+        margin: 0;
+        padding: 0;
+      }
+  
+      .navbar {
+        background: var(--lavender);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .navbar h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+  
+      .navbar .search-bar input {
+        padding: 0.5rem;
+        border: 1px solid var(--black);
+        outline: none;
+      }
+  
+      .navbar .cart {
+        font-weight: bold;
+      }
+  
+      .filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+  
+      .filters select, .filters input {
+        padding: 0.5rem;
+        border: 1px solid var(--black);
+        outline: none;
+      }
+  
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+      }
+  
+      .product-card {
+        background: var(--white);
+        border: 2px solid var(--lavender);
+        padding: 1rem;
+        text-align: center;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 12px rgba(168, 130, 176, 0.1);
+        border-radius: 0px; /* no rounded corners */
+      }
+  
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 0px; /* no rounded corners */
+      }
+  
+      .product-card button {
+        background: var(--rose);
+        color: var(--white);
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 0px; /* no rounded corners */
+      }
+  
+      .product-card button:hover {
+        background: #ff6f9f;
+      }
+  
+      .footer {
+        background: var(--lavender);
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  
+  <body>
+  
+    <!-- Navbar -->
+    <nav class="navbar">
+      <h1>Jewelry Shop</h1>
+      <div class="search-bar">
+        <input type="text" id="search" placeholder="Search products..." />
+      </div>
+      <div class="cart">Cart: <span id="cart-count">0</span></div>
+    </nav>
+  
+    <!-- Filters -->
+    <div class="filters">
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="ring">Rings</option>
+        <option value="earring">Earrings</option>
+        <option value="bracelet">Bracelets</option>
+      </select>
+  
+      <select id="price-sort">
+        <option value="default">Sort by Price</option>
+        <option value="low-high">Low to High</option>
+        <option value="high-low">High to Low</option>
+      </select>
+    </div>
+  
+    <!-- Product Grid -->
+    <div class="product-grid" id="product-container"></div>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Jewelry Shop. All rights reserved.</p>
+    </footer>
+  
+    <!-- JavaScript -->
+    <script>
+      const products = [
+        { id: 1, name: "Rose Gold Ring", category: "ring", price: 30, img: "https://via.placeholder.com/200" },
+        { id: 2, name: "Silver Hoop Earring", category: "earring", price: 25, img: "https://via.placeholder.com/200" },
+        { id: 3, name: "Crystal Bracelet", category: "bracelet", price: 20, img: "https://via.placeholder.com/200" },
+        { id: 4, name: "Charm Ring", category: "ring", price: 35, img: "https://via.placeholder.com/200" },
+      ];
+  
+      let cartCount = 0;
+      const container = document.getElementById('product-container');
+      const search = document.getElementById('search');
+      const categoryFilter = document.getElementById('category-filter');
+      const priceSort = document.getElementById('price-sort');
+  
+      function renderProducts(filterText = '', category = 'all', sort = 'default') {
+        let filtered = products.filter(p =>
+          p.name.toLowerCase().includes(filterText.toLowerCase()) &&
+          (category === 'all' || p.category === category)
+        );
+  
+        if (sort === 'low-high') filtered.sort((a, b) => a.price - b.price);
+        if (sort === 'high-low') filtered.sort((a, b) => b.price - a.price);
+  
+        container.innerHTML = filtered.map(p => `
+          <div class="product-card">
+            <img src="${p.img}" alt="${p.name}" />
+            <h3>${p.name}</h3>
+            <p>$${p.price.toFixed(2)}</p>
+            <button onclick="addToCart()">Add to Cart</button>
+          </div>
+        `).join('');
+      }
+  
+      function addToCart() {
+        cartCount++;
+        document.getElementById('cart-count').textContent = cartCount;
+        alert('Item added to cart!');
+      }
+  
+      search.addEventListener('input', () => {
+        renderProducts(search.value, categoryFilter.value, priceSort.value);
+      });
+  
+      categoryFilter.addEventListener('change', () => {
+        renderProducts(search.value, categoryFilter.value, priceSort.value);
+      });
+  
+      priceSort.addEventListener('change', () => {
+        renderProducts(search.value, categoryFilter.value, priceSort.value);
+      });
+  
+      renderProducts(); // initial render
+    </script>
+  </body>
+  </html>
+  
+
+
+</body>
+</html>
